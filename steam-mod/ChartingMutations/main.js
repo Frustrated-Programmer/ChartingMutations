@@ -466,7 +466,7 @@ function updateMinigame(){
         if (me.unlocked) return false;
         me.unlocked=1;
         if (me.l) me.l.classList.remove('seedLocked');
-        M.getUnlockedN();
+        garden.getUnlockedN();
         return true;
     };
     garden.buildPanel = function(){
