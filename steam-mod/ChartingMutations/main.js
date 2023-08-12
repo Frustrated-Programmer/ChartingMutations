@@ -273,9 +273,9 @@ let plantsMutationChart = {
         {
             spawnChance: 50,
             plot: [
-                ["nothing", "shriekbulb", "nothing"],
-                ["nothing", "spawn", "shriekbulb"],
-                ["shriekbulb", "nothing", "nothing"]
+                ["nothing", "duketater", "nothing"],
+                ["nothing", "spawn", "duketater"],
+                ["duketater", "nothing", "nothing"]
             ],
             specialInstructions: "Only can spawn if adjacent to a <i>minimum</i> of 3 duketaters."
         },
