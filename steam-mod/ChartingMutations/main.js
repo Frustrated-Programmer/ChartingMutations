@@ -93,228 +93,263 @@ let plantMutation = function(spawnChance, plants, specialInstructions){
 };
 let plantsMutationChart = {
     //Percent chance taken from the minigame source code itself. Line 640 in 'minigameGarden.js'
-    //Percent chance has been multiplied by 100
-    //Eg: 500 = 5% chance.
+    //Percent chance is out of 1, I've taken all chances and multiplied them by 100.
+    //0.2 out of 1 is the same as 20% of 100.
+
     bakerWheat: [
-        plantMutation(2000, ["bakerWheat", "bakerWheat"]),
-        plantMutation(500, ["thumbcorn", "thumbcorn"])
+        plantMutation("20", ["bakerWheat", "bakerWheat"]),
+        plantMutation("5", ["thumbcorn", "thumbcorn"])
     ],
     thumbcorn: [
-        plantMutation(500, ["bakerWheat", "bakerWheat"]),
-        plantMutation(1000, ["thumbcorn", "thumbcorn"]),
-        plantMutation(200, ["cronerice", "cronerice"])
+        plantMutation("5", ["bakerWheat", "bakerWheat"]),
+        plantMutation("10", ["thumbcorn", "thumbcorn"]),
+        plantMutation("2", ["cronerice", "cronerice"])
     ],
     cronerice: [
-        plantMutation(100, ["bakerWheat", "thumbcorn"])
+        plantMutation("1", ["bakerWheat", "thumbcorn"])
     ],
     gildmillet: [
-        plantMutation(300, ["cronerice", "thumbcorn"])
+        plantMutation("3", ["cronerice", "thumbcorn"])
     ],
     bakeberry: [
-        plantMutation(10, ["bakerWheat", "bakerWheat"])
+        plantMutation("0.1", ["bakerWheat", "bakerWheat"])
     ],
     clover: [
-        plantMutation(300, ["bakerWheat", "gildmillet"]),
+        plantMutation("3", ["bakerWheat", "gildmillet"]),
         {
-            spawnChance: 70,
+            spawnChance: "0.7",
             plot: [
                 ["spawn", "clover"],
                 ["clover", "spawn"]
             ],
-            specialInstructions: "Will not spawn if 5 other clovers are next to it"
+            specialInstructions: "Will <i>not</i> spawn if 5 or more other Clovers are next to it"
         }
     ],
     goldenClover: [
-        plantMutation(7, ["bakerWheat", "gildmillet"]),
+        plantMutation("0.07", ["bakerWheat", "gildmillet"]),
         {
-            spawnChance: 1,
+            spawnChance: "0.01",
             plot: [
                 ["spawn", "clover"],
                 ["clover", "spawn"]
             ],
-            specialInstructions: "Will not spawn if 5 other clovers are next to it"
+            specialInstructions: "Will <i>not</i> spawn if 5 other Clovers are next to it"
         },
         {
-            spawnChance: 7,
+            spawnChance: "0.07",
             plot: [
                 ["nothing", "clover","nothing"],
                 ["nothing", "spawn","clover"],
                 ["clover","nothing","clover"]
             ],
-            specialInstructions: "Only can spawn if adjacent to a <i>minimum</i> of 4 clovers."
+            specialInstructions: "Only can spawn if adjacent to a <i>minimum</i> of 4 Clovers."
         }
     ],
     shimmerlily: [
-        plantMutation(200, ["clover", "gildmillet"])
+        plantMutation("2", ["clover", "gildmillet"])
     ],
     elderwort: [
-        plantMutation(100, ["shimmerlily", "cronerice"]),
-        plantMutation(20, ["wrinklegill", "cronerice"])
+        plantMutation("1", ["shimmerlily", "cronerice"]),
+        plantMutation("0.2", ["wrinklegill", "cronerice"])
     ],
     chocoroot: [
-        plantMutation(1000, ["bakerWheat", "brownMold"], "The brown mold does <i>not</i> need to be mature.")
+        plantMutation("10", ["bakerWheat", "brownMold"], "The brown mold does <i>not</i> need to be mature.")
     ],
     whiteChocoroot: [
-        plantMutation(1000, ["chocoroot", "whiteMildew"], "The white mildew does <i>not</i> need to be mature.")
+        plantMutation("10", ["chocoroot", "whiteMildew"], "The white mildew does <i>not</i> need to be mature.")
     ],
     brownMold: [
-        plantMutation(5000, ["whiteMildew", "brownMold"], "The brown mold does <i>not</i> need to be mature."),
         {
-            spawnChance: 2000,
+            spawnChance: "50",
+            plot: [
+                ["whiteMildew", "spawn","brownMold"],
+                ["spawn", "nothing","nothing"],
+                ["nothing","brownMold","nothing"]
+            ],
+            specialInstructions: "Spreads from White Mildew.<br><br>Will <i>not</i> spread next to two other Brown Mold."
+        },
+        {
+            spawnChanceSpecial:"Mutation Chance: <span style='color:#00f1ff'>0.2</span>% - <span style='color:#00f1ff'>20</span>%.",
             plot: [
                 ["meddleweed", "meddleweed"],
                 ["meddleweed", "meddleweed"]
             ],
-            specialInstructions: "Chance to spawn upon <i>harvesting</i> meddleweed."
-        }
+            specialInstructions: "Chance to spawn upon <i>harvesting</i> Meddleweed. The <i>older</i> the Meddleweed, the higher the chance."
+        },
     ],
     whiteMildew: [
-        plantMutation(5000, ["brownMold", "whiteMildew"], "The white mildew does <i>not</i> need to be mature.")
+        {
+            spawnChance: "50",
+            plot: [
+                ["brownMold", "spawn","nothing"],
+                ["spawn", "nothing","whiteMildew"],
+                ["nothing","nothing","whiteMildew"]
+            ],
+            specialInstructions: "Spreads from Brown Mold.<br><br>Will <i>not</i> spread next to two other White Mildew."
+        },
     ],
     meddleweed: [
-        plantMutation(1500, ["meddleweed", "meddleweed"], "Meddleweed will not spawn near 4 other Meddleweed.")
+        {
+            spawnChance: "0.2",
+            plot: [
+                ["nothing", "nothing","nothing"],
+                ["nothing", "spawn","nothing"],
+                ["nothing", "nothing","nothing"],
+            ],
+            specialInstructions: "Will <i>not</i> spawn next to any plants."
+        },
+        {
+            spawnChance: "15",
+            plot: [
+                ["nothing", "spawn","meddleweed"],
+                ["spawn", "nothing","nothing"],
+                ["meddleweed", "meddleweed","meddleweed"],
+            ],
+            specialInstructions: "Meddleweed will <i>not</i> spawn near 3 or more Meddleweeds."
+        },
     ],
     whiskerbloom: [
-        plantMutation(100, ["shimmerlily", "whiteChocoroot"])
+        plantMutation("1", ["shimmerlily", "whiteChocoroot"])
     ],
     chimerose: [
-        plantMutation(500, ["shimmerlily", "whiskerbloom"]),
-        plantMutation(50, ["chimerose", "chimerose"])
+        plantMutation("5", ["shimmerlily", "whiskerbloom"]),
+        plantMutation("0.5", ["chimerose", "chimerose"])
     ],
     nursetulip: [
-        plantMutation(500, ["whiskerbloom", "whiskerbloom"])
+        plantMutation("5", ["whiskerbloom", "whiskerbloom"])
     ],
     drowsyfern: [
-        plantMutation(50, ["chocoroot", "keenmoss"])
+        plantMutation("0.5", ["chocoroot", "keenmoss"])
     ],
     wardlichen: [
-        plantMutation(50, ["cronerice", "keenmoss"]),
-        plantMutation(50, ["cronerice", "whiteMildew"]),
+        plantMutation("0.5", ["cronerice", "keenmoss"]),
+        plantMutation("0.5", ["cronerice", "whiteMildew"]),
         {
-            spawnChance: 500,
+            spawnChance: "5",
             plot: [
                 ["nothing", "wardlichen", "spawn"],
                 ["wardlichen", "nothing", "spawn"],
                 ["spawn", "spawn", "nothing"]
             ],
-            specialInstructions: "Will not spawn if more than 2 wardlichens are nearby."
+            specialInstructions: "Will <i>not</i> spawn if more than 2 Wardlichens are nearby."
         }
     ],
     keenmoss: [
-        plantMutation(1000, ["greenRot", "brownMold"]),
+        plantMutation("10", ["greenRot", "brownMold"]),
         {
-            spawnChance: 1000,
+            spawnChance: "10",
             plot: [
                 ["nothing", "keenmoss", "spawn"],
                 ["keenmoss", "nothing", "spawn"],
                 ["spawn", "spawn", "nothing"]
             ],
-            specialInstructions: "Will not spawn if more than 2 keenmoss are nearby."
+            specialInstructions: "Will <i>not</i> spawn if more than 2 Keenmoss are nearby."
         }
     ],
     queenbeet: [
-        plantMutation(100, ["chocoroot", "bakeberry"])
+        plantMutation("1", ["chocoroot", "bakeberry"])
     ],
     queenbeetLump: [
         {
-            spawnChance: 10,
+            spawnChance: "0.1",
             plot: [
                 ["queenbeet", "queenbeet", "queenbeet"],
                 ["queenbeet", "spawn", "queenbeet"],
                 ["queenbeet", "queenbeet", "queenbeet"]
-            ]
+            ],
+            specialInstructions:"Requires a <i>minimum</i> of 8 Queenbeets."
         }
     ],
     duketater: [
-        plantMutation(10, ["queenbeet", "queenbeet"])
+        plantMutation("0.1", ["queenbeet", "queenbeet"])
     ],
     crumbspore: [
-        plantMutation(700, ["crumbspore", "spawn"], "Will not spawn if more than 1 crumbspores are nearby."),
+        plantMutation("7", ["crumbspore", "spawn"], "Will not spawn if more than 1 crumbspores are nearby."),
         {
-            spawnChance: 2000,
+            spawnChanceSpecial:"Mutation Chance: <span style='color:#00f1ff'>0.2</span>% - <span style='color:#00f1ff'>20</span>%.",
             plot: [
                 ["meddleweed", "meddleweed"],
                 ["meddleweed", "meddleweed"]
             ],
-            specialInstructions: "Chance to spawn upon <i>harvesting</i> meddleweed."
+            specialInstructions: "Chance to spawn upon <i>harvesting</i> Meddleweed. The <i>older</i> the Meddleweed, the higher the chance."
         },
-        plantMutation(50, ["doughshroom", "doughshroom"])
+        plantMutation("0.5", ["doughshroom", "doughshroom"])
     ],
     glovemorel: [
-        plantMutation(200, ["crumbspore", "thumbcorn"])
+        plantMutation("2", ["crumbspore", "thumbcorn"])
     ],
     cheapcap: [
-        plantMutation(400, ["crumbspore", "shimmerlily"])
+        plantMutation("4", ["crumbspore", "shimmerlily"])
     ],
     foolBolete: [
-        plantMutation(400, ["doughshroom", "greenRot"])
+        plantMutation("4", ["doughshroom", "greenRot"])
     ],
     doughshroom: [
-        plantMutation(50, ["crumbspore", "crumbspore"]),
-        plantMutation(700, ["doughshroom", "spawn"], "Will not spawn if more than 1 crumbspores are nearby.")
+        plantMutation("0.5", ["crumbspore", "crumbspore"]),
+        plantMutation("7", ["doughshroom", "spawn"], "Will not spawn if more than 1 doughshrooms are nearby.")
     ],
     wrinklegill: [
-        plantMutation(600, ["crumbspore", "brownMold"])
+        plantMutation("6", ["crumbspore", "brownMold"])
     ],
     greenRot: [
-        plantMutation(500, ["whiteMildew", "clover"])
+        plantMutation("5", ["whiteMildew", "clover"])
     ],
     shriekbulb: [
-        plantMutation(10, ["wrinklegill", "elderwort"]),
+        plantMutation("0.1", ["wrinklegill", "elderwort"]),
         {
-            spawnChance: 10,
+            spawnChance: "0.1",
             plot: [
                 ["nothing", "elderwort", "elderwort"],
                 ["elderwort", "spawn", "nothing"],
                 ["elderwort", "nothing", "elderwort"]
             ],
-            specialInstructions: "Only can spawn if adjacent to a <i>minimum</i> of 5 elderworts."
+            specialInstructions: "Only can spawn if next to a <i>minimum</i> of 5 elderworts."
         },
         {
-            spawnChance: 50,
+            spawnChance: "0.5",
             plot: [
                 ["nothing", "duketater", "nothing"],
                 ["nothing", "spawn", "duketater"],
                 ["duketater", "nothing", "nothing"]
             ],
-            specialInstructions: "Only can spawn if adjacent to a <i>minimum</i> of 3 duketaters."
+            specialInstructions: "Only can spawn if next to a <i>minimum</i> of 3 duketaters, <i>mature or not</i>."
         },
         {
-            spawnChance: 20,
+            spawnChance: "0.2",
             plot: [
                 ["nothing", "doughshroom", "nothing"],
                 ["nothing", "spawn", "doughshroom"],
                 ["doughshroom", "doughshroom", "nothing"]
             ],
-            specialInstructions: "Only can spawn if adjacent to a <i>minimum</i> of 4 doughshrooms."
+            specialInstructions: "Only can spawn if next to a <i>minimum</i> of 4 doughshrooms, <i>mature or not</i>."
         },
         {
-            spawnChance: 10,
+            spawnChance: "0.1",
             plot: [
                 ["queenbeet", "nothing", "queenbeet"],
                 ["nothing", "spawn", "queenbeet"],
                 ["queenbeet", "queenbeet", "nothing"]
             ],
-            specialInstructions: "Only can spawn if adjacent to a <i>minimum</i> of 5 queenbeets."
+            specialInstructions: "Only can spawn if next to a <i>minimum</i> of 5 queenbeets."
         },
-        plantMutation(50, ["shriekbulb", "spawn"], "Will not spawn if more than 1 shriekbulb are nearby.<br>The shriekbulb does <i>not</i> have to be mature.")
+        plantMutation("0.5", ["shriekbulb", "spawn"], "Will not spawn if more than 1 shriekbulb are nearby.<br>The shriekbulb does <i>not</i> have to be mature.")
     ],
     tidygrass: [
-        plantMutation(20, ["bakerWheat", "whiteChocoroot"])
+        plantMutation("0.2", ["bakerWheat", "whiteChocoroot"])
     ],
     everdaisy: [
         {
-            spawnChance: 20,
+            spawnChance: "0.2",
             plot: [
                 ["tidygrass", "nothing", "elderwort"],
                 ["tidygrass", "spawn", "elderwort"],
                 ["tidygrass", "nothing", "elderwort"]
             ],
-            specialInstructions: "Only can spawn if adjacent to a <i>minimum</i> of 3 elderworts and tidygrass."
+            specialInstructions: "Only can spawn if next to a <i>minimum</i> of 3 elderworts and tidygrass."
         }
     ],
     ichorpuff: [
-        plantMutation(20, ["elderwort", "crumbspore"])
+        plantMutation("0.2", ["elderwort", "crumbspore"])
     ]
 };
 let plantsToId = {
@@ -672,7 +707,6 @@ let ChartingMutationsMain = new ChartingMutationsClass();
 const readyCheck = setInterval(() => {
     const theGame = Game || window.Game;
     if(typeof theGame !== "undefined" && typeof theGame.ready !== "undefined" && theGame.ready){
-        startTime = Date.now();
         theGame.registerMod("ChartingMutations", ChartingMutationsMain);
         clearInterval(readyCheck);
     }
