@@ -1,0 +1,12 @@
+{
+	"Name": "Charting Mutations",
+	"ID": "ChartingMutations",
+	"Author": "FrustratedProgrammer",
+	"Description": "Shows you how to mutate seeds in the garden.",
+	"ModVersion": 1.0,
+	"GameVersion": 2.052,
+	"Date": "7/12/2023",
+	"Dependencies": [],
+	"Disabled": 0
+    "AllowSteamAchievs": 1
+}
