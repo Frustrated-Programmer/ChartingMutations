@@ -461,7 +461,7 @@ class ChartingMutationsClass{
                     specialInstructions: "Spreads from White Mildew.<br><br>Will <i>not</i> spread next to two other Brown Mold."
                 },
                 {
-                    spawnChanceSpecial:"Mutation Chance: <span style='color:#00f1ff'>0.2</span>% - <span style='color:#00f1ff'>20</span>%.",
+                    spawnChanceSpecial:"Spawn Chance:<br><span style='color:#00f1ff'>0.2</span>% - <span style='color:#00f1ff'>20</span>%.",
                     plot: [
                         ["meddleweed", "meddleweed"],
                         ["meddleweed", "meddleweed"]
@@ -482,7 +482,7 @@ class ChartingMutationsClass{
             ],
             meddleweed: [
                 {
-                    spawnChance: "0.2",
+                    spawnChanceSpecial:"Spawn Chance:<br><span style='color:#00f1ff'>0.2</span>% - <span style='color:#00f1ff'>20</span>%.",
                     plot: [
                         ["nothing", "nothing","nothing"],
                         ["nothing", "spawn","nothing"],
@@ -558,7 +558,7 @@ class ChartingMutationsClass{
             crumbspore: [
                 this.plantMutation("7", ["crumbspore", "spawn"], "Will not spawn if more than 1 crumbspores are nearby."),
                 {
-                    spawnChanceSpecial:"Mutation Chance: <span style='color:#00f1ff'>0.2</span>% - <span style='color:#00f1ff'>20</span>%.",
+                    spawnChanceSpecial:"Spawn Chance:<br><span style='color:#00f1ff'>0.2</span>% - <span style='color:#00f1ff'>20</span>%.",
                     plot: [
                         ["meddleweed", "meddleweed"],
                         ["meddleweed", "meddleweed"]
