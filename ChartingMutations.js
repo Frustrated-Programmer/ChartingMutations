@@ -421,7 +421,10 @@ function updateMinigame(){
                     if(ChartingMutationsMain.showExtraInfo){
                         let percent = document.createElement("span");
                         percent.className = "ModChartingMutationsSpawnChance";
-                        percent.innerHTML = `Mutation Chance: <span style="color:#00f1ff">${(mutation.spawnChance / 100).toString().substring(0, 5)}%</span>`;
+                        if(mutation.spawnChanceSpecial){
+                            percent.innerHTML = mutation.spawnChanceSpecial;
+                        }
+                        else percent.innerHTML = `Mutation Chance: <span style="color:#00f1ff">${(mutation.spawnChance).toString().substring(0, 5)}%</span>`;
                         div.appendChild(percent);
                     }
                     let table = document.createElement("table");
@@ -702,7 +705,6 @@ class ChartingMutationsClass{
 }
 
 let ChartingMutationsMain = new ChartingMutationsClass();
-
 
 const readyCheck = setInterval(() => {
     const theGame = Game || window.Game;

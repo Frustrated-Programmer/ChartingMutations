@@ -434,7 +434,6 @@ function updateMinigame(){
                     if(ChartingMutationsMain.showExtraInfo){
                         let percent = document.createElement("span");
                         percent.className = "ModChartingMutationsSpawnChance";
-
                         if(mutation.spawnChanceSpecial){
                             percent.innerHTML = mutation.spawnChanceSpecial;
                         }
