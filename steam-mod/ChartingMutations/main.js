@@ -14,7 +14,6 @@
  You should have received a copy of the GNU General Public License
  along with this program.  If not, see <https://www.gnu.org/licenses/>.
  **/
-
 function l(what){return document.getElementById(what);}
 class ChartingMutationsClass{
     addCSS(){
@@ -684,7 +683,7 @@ class ChartingMutationsClass{
     }
 
     init(){
-        checkForRun();
+        this.checkForRun();
         Game.registerHook("logic", (value) => {
             this.addSettings();
             return value;
