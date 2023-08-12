@@ -532,7 +532,7 @@ class ChartingMutationsClass{
                         ["wardlichen", "nothing", "spawn"],
                         ["spawn", "spawn", "nothing"]
                     ],
-                    specialInstructions: "Will <i>not</i> spawn if more than 2 Wardlichens are nearby."
+                    specialInstructions: "Will <i>not</i> spawn if another Wardlichens is nearby."
                 }
             ],
             keenmoss: [
@@ -565,7 +565,7 @@ class ChartingMutationsClass{
                 this.plantMutation("0.1", ["queenbeet", "queenbeet"])
             ],
             crumbspore: [
-                this.plantMutation("7", ["crumbspore", "spawn"], "Will not spawn if more than 1 crumbspores are nearby."),
+                this.plantMutation("7", ["crumbspore", "spawn"], "Will not spawn if another crumbspore is nearby."),
                 {
                     spawnChanceSpecial:"Spawn Chance:<br><span style='color:#00f1ff'>0.2</span>% - <span style='color:#00f1ff'>20</span>%.",
                     plot: [
@@ -587,7 +587,7 @@ class ChartingMutationsClass{
             ],
             doughshroom: [
                 this.plantMutation("0.5", ["crumbspore", "crumbspore"]),
-                this.plantMutation("7", ["doughshroom", "spawn"], "Will not spawn if more than 1 doughshrooms are nearby.")
+                this.plantMutation("7", ["doughshroom", "spawn"], "Will not spawn if another doughshrooms is nearby.")
             ],
             wrinklegill: [
                 this.plantMutation("6", ["crumbspore", "brownMold"])
@@ -633,7 +633,7 @@ class ChartingMutationsClass{
                     ],
                     specialInstructions: "Only can spawn if next to a <i>minimum</i> of 5 queenbeets."
                 },
-                this.plantMutation("0.5", ["shriekbulb", "spawn"], "Will not spawn if more than 1 shriekbulb are nearby.<br>The shriekbulb does <i>not</i> have to be mature.")
+                this.plantMutation("0.5", ["shriekbulb", "spawn"], "Will not spawn another shriekbulb is nearby.<br>The shriekbulb does <i>not</i> have to be mature.")
             ],
             tidygrass: [
                 this.plantMutation("0.2", ["bakerWheat", "whiteChocoroot"])
