@@ -41,6 +41,7 @@ This is a just passion project of mine. These are my ideas for how to improve. B
 * Add a setting called No-Cheat, that disables revealing the locked seeds to allow new players to discover the garden naturally.
 * Add a setting to disable the animations
 * Randomize plant's locations in the chart.
+* Add a default setting to make charting permanent progress. A mutation won't be charted until it mutates via by that mutation.
 
 # Check out my OTHER mod!
 

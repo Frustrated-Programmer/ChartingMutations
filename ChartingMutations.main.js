@@ -470,6 +470,13 @@ function updateMinigame(){
             return str;
         };
     };
+    garden.unlockSeed=function(me){
+        if (me.unlocked) return false;
+        me.unlocked=1;
+        if (me.l) me.l.classList.remove('seedLocked');
+        M.getUnlockedN();
+        return true;
+    };
     garden.buildPanel = function(){
         if(!l("gardenSeeds")) return false;
         var str = "";
