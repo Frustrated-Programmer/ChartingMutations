@@ -282,10 +282,19 @@ class ChartingMutationsClass{
         garden.unlockSeed=function(me){
             if (me.unlocked) return false;
             me.unlocked=1;
+            if (me.l) me.l.classList.remove('locked');
             if (me.l) me.l.classList.remove('seedLocked');
             garden.getUnlockedN();
             return true;
         };
+        garden.lockSeed=function(me)
+        {
+            if (me.locked) return false;
+            me.unlocked=0;
+            if (me.l) me.l.classList.add('seedLocked');
+            M.getUnlockedN();
+            return true;
+        }
         garden.buildPanel = function(){
             if(!l("gardenSeeds")) return false;
             var str = "";
