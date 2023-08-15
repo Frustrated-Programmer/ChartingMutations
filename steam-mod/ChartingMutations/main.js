@@ -283,7 +283,7 @@ class ChartingMutationsClass{
             if (me.locked) return false;
             me.unlocked=0;
             if (me.l) me.l.classList.add('seedLocked');
-            M.getUnlockedN();
+            garden.getUnlockedN();
             return true;
         }
         garden.buildPanel = function(){
