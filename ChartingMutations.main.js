@@ -511,11 +511,11 @@ class ChartingMutationsClass{
                 {
                     spawnChance: "15",
                     plot: [
-                        ["nothing", "spawn","meddleweed"],
-                        ["spawn", "nothing","nothing"],
+                        ["nothing", "spawn","spawn"],
+                        ["spawn", "nothing","meddleweed"],
                         ["meddleweed", "meddleweed","meddleweed"],
                     ],
-                    specialInstructions: "Meddleweed will <i>not</i> spawn near 3 or more Meddleweeds."
+                    specialInstructions: "Meddleweed will <i>not</i> spawn near 4 or more Meddleweeds."
                 },
             ],
             whiskerbloom: [
