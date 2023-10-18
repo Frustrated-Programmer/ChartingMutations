@@ -48,3 +48,6 @@ This is a just passion project of mine. These are my ideas for how to improve. B
 
 ## <a href="https://github.com/Frustrated-Programmer/BuildingSorter">Building Sorter</a>
 <a href="https://github.com/Frustrated-Programmer/BuildingSorter"><img src="BuildingSorterPreview.gif"></a>
+
+## <a href="https://github.com/Frustrated-Programmer/SugarLumpInfo">Sugar Lump Info</a>
+<a href="https://github.com/Frustrated-Programmer/SugarLumpInfo"><img src="SugarLumpInfoPreview.gif"></a>
