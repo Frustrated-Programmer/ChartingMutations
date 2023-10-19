@@ -44,10 +44,12 @@ This is a just passion project of mine. These are my ideas for how to improve. B
 * Add a default setting to make charting permanent progress. A mutation won't be charted until it mutates via by that mutation.
 * Add dynamic mutation chances based on the current soil.
 
-# Check out my OTHER mod!
+# Check out my OTHER mods!
 
 ## <a href="https://github.com/Frustrated-Programmer/BuildingSorter">Building Sorter</a>
-<a href="https://github.com/Frustrated-Programmer/BuildingSorter"><img src="BuildingSorterPreview.gif"></a>
+A simple mod that allows you to sort the buildings on the left, a variety of sorters are at your disposal and connections with other popular mods!<br>
+<a href="https://github.com/Frustrated-Programmer/BuildingSorter"><img src="BuildingSorterPreview.gif" style="width: 50%"></a>
 
 ## <a href="https://github.com/Frustrated-Programmer/SugarLumpInfo">Sugar Lump Info</a>
-<a href="https://github.com/Frustrated-Programmer/SugarLumpInfo"><img src="SugarLumpInfoPreview.gif"></a>
+The current tooltip for sugar lumps is cramped and tells you information that you already know or is useless to everyone. I have simplified the tooltip and made it more dynamic, fitting every scenario while also leaving a detailed tooltip availible.<br>
+<a href="https://github.com/Frustrated-Programmer/SugarLumpInfo"><img src="SugarLumpInfoPreview.gif" style="width: 50%"></a>
